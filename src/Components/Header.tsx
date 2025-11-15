@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import type { Currency } from '../Types'
 
 
@@ -7,8 +7,12 @@ const API_KEY = import.meta.env.VITE_API_ENDPOINT;
 
 const Header = () => {
     const [supportedCurrencies,setSupportedCurrencies] = useState<Currency[]>([])
-    const [selectedCurrency,setSelectedCurrency] = useState<Currency>()
-    
+    const [selectedCurrency,setSelectedCurrency] = useState<Currency>(supportedCurrencies[0])
+
+    const handleSelection = (e:React.ChangeEvent<HTMLSelectElement>) =>{
+        setSelectedCurrency(e.target.value)
+    }
+
     useEffect(()=>{
         const fetchData=async()=>{
             const res =await fetch(`${BASE_URL}${API_KEY}`)
@@ -19,11 +23,18 @@ const Header = () => {
         fetchData()
       console.log(supportedCurrencies+'fjdks')
     },[])
+
   return (
     <div className='w-screen h-[60px] bg-cyan-950 flex items-center justify-center fixed'>
-        <div className='container '>
+        <div className='container flex items-center justify-between'>
             <div className='text-2xl text-white'>CryptoCrack</div>
-            <div></div>
+            <div>
+                <select value={selectedCurrency} onChange={handleSelection} 
+                className="block w-full rounded-md border-cyan-500 border-2 shadow-sm py-2 px-3 
+                   focus:none sm:text-sm md:text-xl text-white">
+                    {supportedCurrencies.map((currency,index)=><option key={index} value={currency} className='text-xl text-white'>{currency}</option>)}
+                </select>
+            </div>
         </div>
     </div>
   )
