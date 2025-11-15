@@ -3,6 +3,7 @@ interface ImportMetaEnv {
   // Vite always treats them as strings.
   readonly VITE_API_URL_Currency: string;
   readonly VITE_API_ENDPOINT: string;
+  readonly VITE_API_URL_Crypto:string;
   // Add any other custom VITE_ variables you use
 }
 
