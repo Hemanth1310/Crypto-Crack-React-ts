@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import type { Currency } from '../Types'
+import { handleCurrency } from '../Context/SelectedCurrencyContext';
 
 
 const BASE_URL = import.meta.env.VITE_API_URL_Currency;
@@ -7,10 +8,10 @@ const API_KEY = import.meta.env.VITE_API_ENDPOINT;
 
 const Header = () => {
     const [supportedCurrencies,setSupportedCurrencies] = useState<Currency[]>([])
-    const [selectedCurrency,setSelectedCurrency] = useState<Currency>(supportedCurrencies[0])
+    const {selectedCurrency,handleCurrencyChange} = handleCurrency()
 
     const handleSelection = (e:React.ChangeEvent<HTMLSelectElement>) =>{
-        setSelectedCurrency(e.target.value)
+        handleCurrencyChange(e.target.value)
     }
 
     useEffect(()=>{
