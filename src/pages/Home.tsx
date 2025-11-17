@@ -42,7 +42,7 @@ const Home = (props: Props) => {
                 </div>))}
             </div>
         </div>
-        <div className='w-full h-24 flex flex-col items-center justify-between py-10 px-5 md:px-14 lg:px-24 gap-4'>
+        <div className='w-full flex flex-col items-center justify-between py-10 px-5 md:px-14 lg:px-24 gap-4'>
                     <h1 className='text-4xl text-white'>List of Active Cryptos</h1>
                     <div className='border-2 border-white rounded-4xl p-5 w-full'>
                         <input className='bg-none text-xl text-white'></input>

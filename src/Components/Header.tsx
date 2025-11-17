@@ -26,7 +26,7 @@ const Header = () => {
     },[])
 
   return (
-    <div className='w-screen h-[60px] flex items-center justify-center fixed'>
+    <div className='w-screen h-[60px] flex items-center justify-center fixed bg-cyan-950'>
         <div className='container flex items-center justify-between'>
             <div className='text-2xl text-white'>CryptoCrack</div>
             <div>
