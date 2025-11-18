@@ -19,8 +19,8 @@ const Home = (props: Props) => {
     useEffect(()=>{
         const fetchData = async() =>{
             const res =await fetch(`${BASE_URL}?vs_currency=${selectedCurrency}&order=market_cap_desc&per_page=250&page=1&price_change_percentage=1h,24h,7d&x_cg_demo_api_key=${API_KEY}`)
-            const response=  await res.json()
-            console.log(response+'fjdks')
+            const response= ( await res.json()) as CryptoData[]
+            console.log(response)
             setCryptoData(response)
         }   
         fetchData()

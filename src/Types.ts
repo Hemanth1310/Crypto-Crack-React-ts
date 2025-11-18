@@ -170,3 +170,14 @@ export interface CoinDetailData {
   public_notice: any;
   additional_notices: any;
 }
+
+type HistoricalDataPoint = [
+    number,number
+]
+
+export type MarketChartData = {
+  prices: HistoricalDataPoint[],
+  market_caps: HistoricalDataPoint[],
+  total_volumes: HistoricalDataPoint[]
+}
+
