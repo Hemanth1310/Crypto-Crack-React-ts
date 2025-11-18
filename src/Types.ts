@@ -175,9 +175,8 @@ type HistoricalDataPoint = [
     number,number
 ]
 
-export type MarketChartData = {
-  prices: HistoricalDataPoint[],
-  market_caps: HistoricalDataPoint[],
-  total_volumes: HistoricalDataPoint[]
-}
+export type MarketChartData = [
+    number,
+    number
+]
 

@@ -39,18 +39,18 @@ const CoinDetails = (props: Props) => {
 
 
   return (
-   <div className="container w-full bg-white rounded-2xl p-10 flex items-center">
-        <div className='flex flex-col items-center px-10 border-r-2 flex-1'>
-            <img src={coinData?.image.large}></img>
+   <div className="container w-full bg-white rounded-2xl p-4 lg:p-10 flex items-center flex-col lg:flex-row">
+        <div className='flex flex-col items-center px-4 lg:px-10 flex-1'>
+            <img src={coinData?.image.large} className='h-4 lg:h-10'></img>
              <h1 className='text-2xl'>{coinData?.name}-{coinData?.symbol}</h1>
-             <div>Current Price: ${coinData?.market_data.current_price.usd}</div>
-             <div>Market Cap: ${coinData?.market_data.market_cap.usd}</div>
+             <div><b>Current Price: </b>${coinData?.market_data.current_price.usd}</div>
+             <div><b>Market Cap: </b>${coinData?.market_data.market_cap.usd}</div>
              
         </div>
-        <div className='flex-3'>
-        {id?
-            <HistoricalData id={id}/>:<div>Coin Not selected</div>    
-        }  
+        <div className='flex-3 bg-amber-500 w-full'>
+            {id?
+                <HistoricalData id={id}/>:<div>Coin Not selected</div>    
+            }  
         </div>
    </div>
   )
