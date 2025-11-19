@@ -14,7 +14,8 @@ const Home = (props: Props) => {
     const [cryptoData,setCryptoData] = useState<CryptoData[]>([])
     const TrendingCryptos = cryptoData.slice(0,3) 
     const {selectedCurrency} = handleCurrency()
-
+    const [searchInput,setSearchInput] = useState<string>('')
+    const [searchResults, setSearchResults] = useState<CryptoData[]>([])
 
     useEffect(()=>{
         const fetchData = async() =>{
@@ -26,6 +27,11 @@ const Home = (props: Props) => {
         fetchData()
 
     },[selectedCurrency])
+
+    useEffect(()=>{
+        const results :CryptoData[] = cryptoData.filter((entry)=>entry.name.toLowerCase().includes(searchInput.toLocaleLowerCase()))
+        setSearchResults(results)
+    },[searchInput,cryptoData])
 
     return (
     <div className='container'>
@@ -44,11 +50,15 @@ const Home = (props: Props) => {
         </div>
         <div className='w-full flex flex-col items-center justify-between py-10 px-5 md:px-14 lg:px-24 gap-4'>
                     <h1 className='text-4xl text-white'>List of Active Cryptos</h1>
-                    <div className='border-2 border-white rounded-4xl p-5 w-full'>
-                        <input className='bg-none text-xl text-white'></input>
+                    <div className='w-full flex items-center border-white rounded-2xl px-5 py-2 border-2'>
+                        <input type='text' value={searchInput} onChange={(e)=>setSearchInput(e.target.value)} className='bg-none w-full text-white text-2xl focus:outline-none'></input>
+                        <span style={{fontSize:'50px',color:'#fff'}} className="material-symbols-outlined">
+                            search
+                        </span>
                     </div>
+                    
         </div>
-        <CoinsList cryptoData={cryptoData.slice(0,50)}/>
+        <CoinsList cryptoData={searchResults.slice(0,50)}/>
     </div>
   )
 }
