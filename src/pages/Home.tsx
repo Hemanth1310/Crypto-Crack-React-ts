@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { CryptoData } from '../Types';
-import AliceCarousel from 'react-alice-carousel';
-import { Link } from 'react-router';
 import { handleCurrency } from '../Context/SelectedCurrencyContext';
 import CoinsList from '../Components/CoinsList';
 
-type Props = {}
 
 const BASE_URL = import.meta.env.VITE_API_URL_Crypto;
 const API_KEY = import.meta.env.VITE_API_ENDPOINT;
 
-const Home = (props: Props) => {
+const Home = () => {
     const [cryptoData,setCryptoData] = useState<CryptoData[]>([])
     const TrendingCryptos = cryptoData.slice(0,3) 
     const {selectedCurrency} = handleCurrency()

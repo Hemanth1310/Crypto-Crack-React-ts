@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { MarketChartData } from '../Types'
 import { Line } from 'react-chartjs-2'
 import { handleCurrency } from '../Context/SelectedCurrencyContext'
@@ -38,7 +38,7 @@ const HistoricalData = (props: Props) => {
     const [days,setDays] = useState<days>(1)
     const [isLoading,setIsLoading] = useState<boolean>(true)
     const dayAvailable:days[] = [1,7,30,365] 
-     const {selectedCurrency,handleCurrencyChange} = handleCurrency()
+     const {selectedCurrency} = handleCurrency()
     const fetchData = async()=>{
         try{
             const response =await fetch(`${BASE_URL}?vs_currency=usd&days=${days}&x_cg_demo_api_key=${API_KEY}`)

@@ -1,12 +1,9 @@
-import { useState } from 'react'
 import { BrowserRouter, Route,Routes } from 'react-router'
 import Header from './Components/Header'
 import Home from './pages/Home'
 import { SelectedCurrencyContextProvider } from './Context/SelectedCurrencyContext'
 import CoinDetails from './pages/CoinDetails'
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
   <SelectedCurrencyContextProvider>
     <BrowserRouter>

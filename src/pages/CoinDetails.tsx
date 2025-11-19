@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import type { CoinDetailData } from '../Types';
-import { Line } from 'react-chartjs-2';
 import HistoricalData from '../Components/HistoricalData';
-
-type Props = {}
-
-
 
 const API_KEY = import.meta.env.VITE_API_ENDPOINT;
 const BASE_URL = import.meta.env.VITE_API_URL_COIN_DETAILS
 
 
-const CoinDetails = (props: Props) => {
+const CoinDetails = () => {
     const {id} = useParams()
     const [coinData,setCoinData] = useState<CoinDetailData>()
 
