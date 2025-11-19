@@ -37,8 +37,8 @@ const Home = (props: Props) => {
                 <div key={coin.id} className='flex flex-col items-center justify-center'>
                     <img className='h-42' src={coin.image}></img>
                     <div className='text-white text-2xl'>{coin.name}</div>
-                     <div className='text-white text-lg font-light'>${coin.market_cap}</div>
-                    <div className='text-white text-lg font-light'>#{coin.market_cap_rank}</div>
+                     <div className='text-white text-lg font-light'>Market Cap: ${coin.market_cap}</div>
+                    <div className='text-white text-lg font-bold'><b>Rank:#{coin.market_cap_rank}</b></div>
                 </div>))}
             </div>
         </div>

@@ -29,12 +29,15 @@ type Props = {
 
 type days = 1|7|30|365
 
+
+
 const API_KEY = import.meta.env.VITE_API_ENDPOINT
 const BASE_URL = import.meta.env.VITE_API_URL_History
 const HistoricalData = (props: Props) => {
     const [historicalData,setHitoricalData] = useState<MarketChartData[]>([])
     const [days,setDays] = useState<days>(1)
     const [isLoading,setIsLoading] = useState<boolean>(true)
+    const dayAvailable:days[] = [1,7,30,365] 
      const {selectedCurrency,handleCurrencyChange} = handleCurrency()
     const fetchData = async()=>{
         try{
@@ -53,7 +56,7 @@ const HistoricalData = (props: Props) => {
     }
     useEffect(()=>{
         fetchData()
-    },[props.id])
+    },[props.id,days])
   return (
     <div className='flex items-center justify-center '>
         {isLoading?<div>Loading please Wait...</div>:
@@ -83,6 +86,11 @@ const HistoricalData = (props: Props) => {
                             },
                         }}
                 />
+                <div className='w-full flex justify-between mt-4'>
+                    {dayAvailable.map((day)=>(<button onClick={()=>setDays(day)} className={` w-20 md:w-24 lg:w-42  p-4 rounded-2xl text-xl ${day===days? 'bg-amber-200':'bg-gray-200'}`}>{day===1?'Today':`${day}'s Period`}</button>)
+                        
+                    )}
+                </div>
             </div>
         }</div>
   )

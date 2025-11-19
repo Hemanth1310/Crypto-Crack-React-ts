@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import type { Currency } from '../Types'
 import { handleCurrency } from '../Context/SelectedCurrencyContext';
+import { useNavigate } from 'react-router';
 
 
 const BASE_URL = import.meta.env.VITE_API_URL_Currency;
@@ -9,7 +10,7 @@ const API_KEY = import.meta.env.VITE_API_ENDPOINT;
 const Header = () => {
     const [supportedCurrencies,setSupportedCurrencies] = useState<Currency[]>([])
     const {selectedCurrency,handleCurrencyChange} = handleCurrency()
-
+    const navigate = useNavigate()
     const handleSelection = (e:React.ChangeEvent<HTMLSelectElement>) =>{
         handleCurrencyChange(e.target.value)
     }
@@ -28,7 +29,7 @@ const Header = () => {
   return (
     <div className='w-screen h-[60px] flex items-center justify-center fixed bg-cyan-950'>
         <div className='container flex items-center justify-between'>
-            <div className='text-2xl text-white'>CryptoCrack</div>
+            <div className='text-2xl text-white cursor-pointer' onClick={()=>navigate('/')}>CryptoCrack</div>
             <div>
                 <select value={selectedCurrency} onChange={handleSelection} 
                 className="block w-full rounded-md border-cyan-500 border-2 shadow-sm py-2 px-3 
