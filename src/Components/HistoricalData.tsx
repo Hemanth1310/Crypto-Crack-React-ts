@@ -58,7 +58,7 @@ const HistoricalData = (props: Props) => {
         fetchData()
     },[props.id,days])
   return (
-    <div className='flex items-center justify-center '>
+    <div className='flex items-center justify-center'>
         {isLoading?<div>Loading please Wait...</div>:
             <div className=' p-4 md:p-8  bg-white h-full w-full'>
                <Line

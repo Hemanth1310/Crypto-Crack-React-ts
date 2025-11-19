@@ -29,16 +29,16 @@ const Home = (props: Props) => {
 
     return (
     <div className='container'>
-        <div className='w-full rounded-3xl bg-cyan-950 h-[500px] flex flex-col items-center p-10 gap-4'>
+        <div className='w-full rounded-3xl bg-cyan-950 flex flex-col items-center p-4 lg:p-10 gap-4'>
             <div className='text-2xl md:text-8xl text-white'>CryptoCrack</div>
-             <div className='text-xl md:text-2xl text-white opacity-50'>Get All the Detials of your favroite Cryptos here</div>
-            <div className='flex w-full items-center justify-around'>
+             <div className='text-sm md:text-2xl text-white opacity-50'>Get All the Detials of your favroite Cryptos here</div>
+            <div className='flex w-full flex-col lg:flex-row items-center justify-around'>
                 {TrendingCryptos.map((coin)=>(
                 <div key={coin.id} className='flex flex-col items-center justify-center'>
-                    <img className='h-42' src={coin.image}></img>
-                    <div className='text-white text-2xl'>{coin.name}</div>
-                     <div className='text-white text-lg font-light'>Market Cap: ${coin.market_cap}</div>
-                    <div className='text-white text-lg font-bold'><b>Rank:#{coin.market_cap_rank}</b></div>
+                    <img className='h-16 md:h-24 lg:h-42' src={coin.image}></img>
+                    <div className='text-white text-sm lg:text-2xl'>{coin.name}</div>
+                     <div className='text-white text-sm lg:text-xl font-light'>Market Cap: ${coin.market_cap}</div>
+                    <div className='text-white text-sm lg:text-xl font-bold'><b>Rank:#{coin.market_cap_rank}</b></div>
                 </div>))}
             </div>
         </div>
