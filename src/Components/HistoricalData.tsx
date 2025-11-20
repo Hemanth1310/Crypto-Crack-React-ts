@@ -87,7 +87,8 @@ const HistoricalData = (props: Props) => {
                         }}
                 />
                 <div className='w-full flex justify-between mt-4'>
-                    {dayAvailable.map((day)=>(<button onClick={()=>setDays(day)} className={` w-20 md:w-24 lg:w-42  p-4 rounded-2xl text-xl ${day===days? 'bg-amber-200':'bg-gray-200'}`}>{day===1?'Today':`${day}'s Period`}</button>)
+                    {dayAvailable.map((day,index)=>(<button key={index} onClick={()=>setDays(day)} className={` w-20 md:w-24 lg:w-42  p-2 md:p-4 rounded-2xl text-sm md:text-xl ${day===days? 'bg-amber-200':'bg-gray-200'}`}>
+                        {day===1?'Today':`Previous ${day} day's `}</button>)
                         
                     )}
                 </div>

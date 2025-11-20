@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import type { CryptoData } from '../Types';
 import { handleCurrency } from '../Context/SelectedCurrencyContext';
 import CoinsList from '../Components/CoinsList';
-import { error } from 'console';
 
 
 const BASE_URL = import.meta.env.VITE_API_URL_Crypto;
