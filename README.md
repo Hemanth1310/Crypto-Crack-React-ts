@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
+# Crpto-crack: Crypto Coins explore app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Overview
+The **Crpto-crack: Crypto Coins explore app** is a web-based application built with **React**, **Typescript** and **Tailwind CSS** that facilitates efficient scheduling, record-keeping, and communication between doctors and patients. The system helps manage appointments, patient records, and prescriptions seamlessly.
 
-Currently, two official plugins are available:
+## Link to Access
+[https://medico-6h8r.onrender.com/](https://crypto-crack-react-ts-live.onrender.com/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
+### 🔹 For Ueers:
+- Dashboard trending coins list based on ranks
+- View and explaore each coin 
+- Check charts for each coin for 1day, 7 days, 30 days and 365 days
 
-## React Compiler
+## 🛠 Tech Stack
+- **Frontend:** React, Typescript and Tailwind CSS
+- **State Management:** React Context API 
+- **Routing:** React Router
+- **Backend API:** Coingeko
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📦 Installation & Setup
+1. **Clone the Repository:**
+   ```sh
+   git clone [https://github.com/your-username/doctor-patient-management](https://github.com/Hemanth1310/Crypto-Crack-React-ts).git
+   cd crypto-crack
+   ```
+2. **Install Dependencies:**
+   ```sh
+   npm install
+   ```
+3. **Start the Development Server:**
+   ```sh
+   npm run dev
+   ```
+4. **Access the App:**
+   Open `http://localhost:5173` (or the Vite default port) in your browser.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🎨 UI Design
+The system is styled with **Tailwind CSS**, ensuring a modern and responsive interface. Features include:
+- Clean, minimalistic UI
+- Dark mode support (if implemented)
+- Mobile-friendly design
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🚀 Deployment
+To deploy the app on Render:
+```sh
+npm run build
 ```
+Then, upload the `dist` folder to your preferred hosting platform.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠 Future Enhancements
+- Implement authentication (e.g., Firebase Auth, JWT)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📬 Contact
+For any queries or suggestions, feel free to reach out via hemanth13k@gmail.com.
+
