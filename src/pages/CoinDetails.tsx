@@ -21,7 +21,6 @@ const CoinDetails = () => {
                     throw new Error('Unable to fetch data')
                 }else{
                     const resp = (await response.json()) as CoinDetailData
-                    console.log(resp)
                     setCoinData(resp)
                 }
             }catch(error){

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import type { CryptoData } from '../Types';
 import { handleCurrency } from '../Context/SelectedCurrencyContext';
 import CoinsList from '../Components/CoinsList';
+import { error } from 'console';
 
 
 const BASE_URL = import.meta.env.VITE_API_URL_Crypto;
@@ -16,10 +17,19 @@ const Home = () => {
 
     useEffect(()=>{
         const fetchData = async() =>{
-            const res =await fetch(`${BASE_URL}?vs_currency=${selectedCurrency}&order=market_cap_desc&per_page=250&page=1&price_change_percentage=1h,24h,7d&x_cg_demo_api_key=${API_KEY}`)
-            const response= ( await res.json()) as CryptoData[]
-            console.log(response)
-            setCryptoData(response)
+            try{
+                const res =await fetch(`${BASE_URL}?vs_currency=${selectedCurrency}&order=market_cap_desc&per_page=250&page=1&price_change_percentage=1h,24h,7d&x_cg_demo_api_key=${API_KEY}`)
+                if(!res.ok){
+                    throw new Error('Fetching Coins Failed')
+                }else{
+                    const response= ( await res.json()) as CryptoData[]
+                    setCryptoData(response)
+                }
+              
+            }catch(error){
+                console.log(error)
+            }
+           
         }   
         fetchData()
 

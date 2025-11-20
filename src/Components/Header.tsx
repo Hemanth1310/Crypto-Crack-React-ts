@@ -17,13 +17,20 @@ const Header = () => {
 
     useEffect(()=>{
         const fetchData=async()=>{
-            const res =await fetch(`${BASE_URL}${API_KEY}`)
-            const response=  await res.json()
-            console.log(response+'fjdks')
-            setSupportedCurrencies(response)
+            try{
+                 const res =await fetch(`${BASE_URL}${API_KEY}`)
+                 if(!res.ok){
+                    throw new Error('Fetching supported currencies failed')
+                 }else{
+                    const response=  (await res.json()) as Currency[]
+                    setSupportedCurrencies(response)
+                 }
+            }catch(error){
+                console.log(error)
+            }         
+            
         }
         fetchData()
-      console.log(supportedCurrencies+'fjdks')
     },[])
 
   return (
