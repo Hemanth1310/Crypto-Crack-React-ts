@@ -13,6 +13,20 @@ const Home = () => {
     const {selectedCurrency} = handleCurrency()
     const [searchInput,setSearchInput] = useState<string>('')
     const [searchResults, setSearchResults] = useState<CryptoData[]>([])
+    const coinsPerPage = 10
+    const [currentPage,setCurrentPage]=useState(1)
+    const startIndex = (currentPage-1)*coinsPerPage
+    const endIndex  = startIndex+coinsPerPage
+    const numOfPages = Math.ceil(searchResults.length/coinsPerPage)
+    const nextPage=()=>{
+        setCurrentPage(prev=>prev+1)
+    }
+    const prevPage=()=>{
+        setCurrentPage(prev=>prev-1)
+    }
+    const updateCurrentPage=(page_number:number)=>{
+        setCurrentPage(page_number)
+    }
 
     useEffect(()=>{
         const fetchData = async() =>{
@@ -35,9 +49,12 @@ const Home = () => {
     },[selectedCurrency])
 
     useEffect(()=>{
-        const results :CryptoData[] = cryptoData.filter((entry)=>entry.name.toLowerCase().includes(searchInput.toLocaleLowerCase()))
+        const results :CryptoData[] = cryptoData.filter((entry)=>entry.name.toLowerCase().includes(searchInput.toLocaleLowerCase()))       
         setSearchResults(results)
     },[searchInput,cryptoData])
+
+
+
 
     return (
     <div className='container'>
@@ -64,7 +81,15 @@ const Home = () => {
                     </div>
                     
         </div>
-        <CoinsList cryptoData={searchResults.slice(0,50)}/>
+        <CoinsList cryptoData={searchResults.slice(startIndex,endIndex)}/>
+        <div className='w-full flex gap-4 mt-4'>
+            <button disabled={currentPage===1} className='flex-1 text-white text-xl cursor-pointer disabled:text-gray-500' onClick={prevPage}> Previous</button>
+            <div className=' flex-9 flex gap-1 sm:overflow-scroll md:overflow-hidden'>
+            {[...Array(numOfPages)].map((_,index)=>
+            <button onClick={()=>updateCurrentPage(index+1)} className={`flex-1 ${currentPage===index+1?'bg-amber-200 text-gray-600':'bg-white text-gray-400 '} text-xl cursor-pointer`}>{index+1}</button>)}
+            </div>
+            <button disabled={currentPage===numOfPages} className='flex-1 text-white text-xl cursor-pointer disabled:text-gray-500' onClick={nextPage}>Next</button>
+        </div>
     </div>
   )
 }
