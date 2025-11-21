@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import type { CryptoData } from '../Types';
 import { handleCurrency } from '../Context/SelectedCurrencyContext';
 import CoinsList from '../Components/CoinsList';
@@ -12,12 +12,16 @@ const Home = () => {
     const TrendingCryptos = cryptoData.slice(0,3) 
     const {selectedCurrency} = handleCurrency()
     const [searchInput,setSearchInput] = useState<string>('')
-    const [searchResults, setSearchResults] = useState<CryptoData[]>([])
+    // const [searchResults, setSearchResults] = useState<CryptoData[]>([])
     const coinsPerPage = 10
     const [currentPage,setCurrentPage]=useState(1)
     const startIndex = (currentPage-1)*coinsPerPage
     const endIndex  = startIndex+coinsPerPage
+    const searchResults :CryptoData[] = useMemo(()=>{
+        return cryptoData.filter((entry)=>entry.name.toLowerCase().includes(searchInput.toLocaleLowerCase()))
+    },[searchInput,cryptoData])
     const numOfPages = Math.ceil(searchResults.length/coinsPerPage)
+    
     const nextPage=()=>{
         setCurrentPage(prev=>prev+1)
     }
@@ -47,13 +51,6 @@ const Home = () => {
         fetchData()
 
     },[selectedCurrency])
-
-    useEffect(()=>{
-        const results :CryptoData[] = cryptoData.filter((entry)=>entry.name.toLowerCase().includes(searchInput.toLocaleLowerCase()))       
-        setSearchResults(results)
-    },[searchInput,cryptoData])
-
-
 
 
     return (
